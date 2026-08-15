@@ -1,5 +1,7 @@
 import { SiteFooter } from "./components/layout/SiteFooter";
 import { SiteHeader } from "./components/layout/SiteHeader";
+import { Hero } from "./components/sections/Hero";
+import { Thesis } from "./components/sections/Thesis";
 
 export function App() {
   return (
@@ -9,12 +11,8 @@ export function App() {
       </a>
       <SiteHeader />
       <main id="main-content">
-        <section className="section shell-intro" id="top">
-          <div className="site-container">
-            <p className="eyebrow">StructureML</p>
-            <h1>Foundational ML for structured data.</h1>
-          </div>
-        </section>
+        <Hero />
+        <Thesis />
       </main>
       <SiteFooter />
     </div>
