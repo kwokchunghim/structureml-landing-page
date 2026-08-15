@@ -35,6 +35,15 @@ export interface WritingEntry {
   link?: WritingLink;
 }
 
+export type FounderProfileStatus = "complete" | "tbc";
+
+export interface FounderProfile {
+  name: string;
+  role: "Co-founder";
+  bio: string;
+  status: FounderProfileStatus;
+}
+
 export const siteLinks: SiteLinks = {
   githubUrl: null,
   contactEmail: "info@structureml.com",
@@ -97,5 +106,20 @@ export const writingEntries: readonly WritingEntry[] = [
     year: 2026,
     summary:
       "Why relational databases provide a natural substrate for end-to-end representation learning.",
+  },
+];
+
+export const founders: readonly FounderProfile[] = [
+  {
+    name: "Tony Kwok",
+    role: "Co-founder",
+    bio: "Machine learning engineer based in London, interested in production ML, structured-data foundation models and learning systems.",
+    status: "complete",
+  },
+  {
+    name: "Billy Zhao",
+    role: "Co-founder",
+    bio: "Information TBC.",
+    status: "tbc",
   },
 ];
