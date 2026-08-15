@@ -137,9 +137,9 @@ Heading:
 
 ### The capability is visible. The frontier is still open.
 
-Copy:
+Copy, with each named work linked inline:
 
-> Recent work shows that pretrained models can transfer across relational databases and prediction tasks. These systems make the direction credible; they do not close the gaps in context efficiency, relational–tabular integration or learning to make decisions.
+> Recent external work—including Relational Transformer (ICLR 2026) and KumoRFM-2 (Preprint · 2026)—shows that pretrained models can transfer across relational databases and prediction tasks. RT-J (Preprint · 2026) and OpenRFM (Preprint · 2026) further explore context-efficient relational inference and the combination of relational and tabular in-context learning. Together, this body of work makes the direction credible without closing the gaps in context efficiency, relational–tabular integration or learning to make decisions.
 
 Attributed callout label:
 
@@ -149,22 +149,14 @@ Callout:
 
 > We believe structured-data foundation models are at a GPT-2 moment: the core capability is visible, but the field has not yet reached its GPT-3 breakthrough. Getting there will require advances in data, context efficiency, adaptation and decision learning—not scale alone.
 
-Display a compact, publication-style list labelled “Selected external research”:
+Approved citation destinations:
 
-1. Relational Transformer — ICLR 2026
-   - Cross-database and cross-task relational prediction without downstream weight updates.
-   - https://openreview.net/forum?id=rpPtgMC5s9
-2. KumoRFM-2 — Preprint · 2026
-   - Few-shot prediction across connected tables with task conditioning and scalable relational retrieval.
-   - https://arxiv.org/abs/2604.12596
-3. RT-J — Preprint · 2026
-   - Context-efficient relational prediction using task-relevant evidence retrieved from the database.
-   - https://openreview.net/forum?id=oQINTd9din
-4. OpenRFM — Preprint · 2026
-   - A dual-stage design combining relational and tabular in-context learning.
-   - https://arxiv.org/abs/2606.04320
+- Relational Transformer — ICLR 2026 — https://openreview.net/forum?id=rpPtgMC5s9
+- KumoRFM-2 — Preprint · 2026 — https://arxiv.org/abs/2604.12596
+- RT-J — Preprint · 2026 — https://openreview.net/forum?id=oQINTd9din
+- OpenRFM — Preprint · 2026 — https://arxiv.org/abs/2606.04320
 
-These references are external research, not StructureML publications. Open each in a new tab with safe external-link attributes and accessible new-tab text.
+These citations are external research, not StructureML publications. Render them only as inline links inside the state-of-the-field prose; do not display a standalone “Selected external research” heading, publication list, card group, or other treatment that could imply authorship. Open each in a new tab with safe external-link attributes and accessible new-tab text.
 
 Keep the comparison exploratory. Do not say foundation models have replaced feature engineering or conventional supervised learning.
 
@@ -383,7 +375,7 @@ Writing statuses: upcoming, published.
 
 Link destinations: internal, github, arxiv, external.
 
-Research references contain title, citation/status detail, relevance, and an HTTPS URL. Initial references are the four external works listed in the Thesis section.
+Research references contain title, citation/status detail, and an HTTPS URL. Initial references are the four external works cited inline in the Thesis section.
 
 Founder entries contain name, role, bio, and complete/tbc status.
 
