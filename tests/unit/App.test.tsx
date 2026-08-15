@@ -183,6 +183,9 @@ describe("StructureML landing page", () => {
     const heading = screen.getByRole("heading", { name: "Writing" });
     const section = heading.closest("section");
     expect(section).not.toBeNull();
+    expect(
+      within(section as HTMLElement).getByText("Writing", { selector: ".eyebrow" }),
+    ).toBeInTheDocument();
     expect(within(section as HTMLElement).getByText("COMING SOON")).toBeInTheDocument();
     expect(within(section as HTMLElement).getByText("Nothing published yet.")).toBeInTheDocument();
     expect(within(section as HTMLElement).queryByRole("article")).not.toBeInTheDocument();
