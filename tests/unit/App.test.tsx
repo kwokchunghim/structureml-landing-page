@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { App } from "../../src/App";
-import { researchAreas, writingEntries } from "../../src/content/site";
+import { Writing } from "../../src/components/sections/Writing";
 
 describe("StructureML landing page", () => {
   it("renders the approved positioning and page landmarks", () => {
@@ -126,6 +126,38 @@ describe("StructureML landing page", () => {
   it("renders all research questions and exact topic tags", () => {
     render(<App />);
 
+    expect(
+      screen.getByText(
+        "We study what comes after the first convincing structured-data foundation models: how relational and tabular learning fit together, how context can be made efficient, and how predictions can support decisions.",
+      ),
+    ).toBeInTheDocument();
+
+    const researchAreas = [
+      {
+        title: "Relational & Tabular Foundation Models",
+        question:
+          "How should relational representation learning and tabular task adaptation work together across schemas and tasks, and can they be unified without losing the strengths of either?",
+        tags: ["RFM", "Tabular FM", "Representation Learning", "Task Adaptation"],
+      },
+      {
+        title: "Context-Efficient Adaptation",
+        question:
+          "Can models learn a query- and task-dependent sufficient context from labelled examples, relational neighbourhoods and schema signals—without paying full-context costs or losing rare, global and temporally relevant information?",
+        tags: ["Retrieval", "Support Selection", "Context Efficiency", "Efficient Inference"],
+      },
+      {
+        title: "From Prediction to Decisioning",
+        question:
+          "How can pretrained structured-data models move from predicting outcomes to choosing actions under objectives, constraints and feedback—and safely balance exploration with exploitation as preferences and responses evolve?",
+        tags: [
+          "Decision Learning",
+          "Contextual Bandits",
+          "Exploration / Exploitation",
+          "Constrained Optimization",
+        ],
+      },
+    ] as const;
+
     researchAreas.forEach((area) => {
       const heading = screen.getByRole("heading", { name: area.title });
       const row = heading.closest("article");
@@ -137,19 +169,43 @@ describe("StructureML landing page", () => {
     });
   });
 
-  it("labels every writing concept as upcoming and leaves it unlinked", () => {
+  it("keeps writing in an honest empty state", () => {
     render(<App />);
 
-    expect(screen.getByText("Upcoming concepts — not yet published.")).toBeInTheDocument();
-    writingEntries.forEach((entry) => {
-      const heading = screen.getByRole("heading", { name: entry.title });
-      const row = heading.closest("article");
-      expect(row).not.toBeNull();
-      expect(
-        within(row as HTMLElement).getByText("Upcoming", { exact: false }),
-      ).toBeInTheDocument();
-      expect(within(row as HTMLElement).queryByRole("link")).not.toBeInTheDocument();
-    });
+    const heading = screen.getByRole("heading", { name: "Research & Writing" });
+    const section = heading.closest("section");
+    expect(section).not.toBeNull();
+    expect(within(section as HTMLElement).getByText("COMING SOON")).toBeInTheDocument();
+    expect(within(section as HTMLElement).getByText("Nothing published yet.")).toBeInTheDocument();
+    expect(within(section as HTMLElement).queryByRole("article")).not.toBeInTheDocument();
+    expect(within(section as HTMLElement).queryByRole("link")).not.toBeInTheDocument();
+  });
+
+  it("retains the typed renderer for a future published entry", () => {
+    render(
+      <Writing
+        entries={[
+          {
+            title: "Published fixture",
+            kind: "Research Note",
+            status: "published",
+            year: 2026,
+            summary: "Test-only published research summary.",
+            link: {
+              destination: "external",
+              href: "https://example.com/research-note",
+            },
+          },
+        ]}
+      />,
+    );
+
+    const link = screen.getByRole("link", { name: /Published fixture/u });
+    expect(link).toHaveAttribute("href", "https://example.com/research-note");
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(screen.getByText("Published", { selector: ".writing-meta span" })).toBeInTheDocument();
+    expect(screen.queryByText("COMING SOON")).not.toBeInTheDocument();
   });
 
   it("presents a clearly non-functional prototype placeholder", () => {

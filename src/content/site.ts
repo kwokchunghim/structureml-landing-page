@@ -110,53 +110,33 @@ export const researchPositioning: ResearchPositioning = {
 export const researchAreas: readonly ResearchArea[] = [
   {
     number: "01",
-    title: "Relational Foundation Models",
+    title: "Relational & Tabular Foundation Models",
     question:
-      "How can pretrained models learn across tables, entities, relationships and schemas, then generalize to unseen databases and prediction tasks?",
-    tags: ["RFM", "Relational Learning", "RDL", "Pretraining"],
+      "How should relational representation learning and tabular task adaptation work together across schemas and tasks, and can they be unified without losing the strengths of either?",
+    tags: ["RFM", "Tabular FM", "Representation Learning", "Task Adaptation"],
   },
   {
     number: "02",
-    title: "Tabular & Structured ICL",
+    title: "Context-Efficient Adaptation",
     question:
-      "How can models infer new structured-data prediction tasks from labelled examples without requiring a new model-training pipeline for every task?",
-    tags: ["Tabular FM", "PFN", "ICL", "Task Adaptation"],
+      "Can models learn a query- and task-dependent sufficient context from labelled examples, relational neighbourhoods and schema signals—without paying full-context costs or losing rare, global and temporally relevant information?",
+    tags: ["Retrieval", "Support Selection", "Context Efficiency", "Efficient Inference"],
   },
   {
     number: "03",
-    title: "Efficient Context & Retrieval",
+    title: "From Prediction to Decisioning",
     question:
-      "Can structured-data models learn which examples and relational context actually matter instead of conditioning on an entire training dataset?",
-    tags: ["Retrieval", "Context Selection", "Scaling", "Efficient Inference"],
+      "How can pretrained structured-data models move from predicting outcomes to choosing actions under objectives, constraints and feedback—and safely balance exploration with exploitation as preferences and responses evolve?",
+    tags: [
+      "Decision Learning",
+      "Contextual Bandits",
+      "Exploration / Exploitation",
+      "Constrained Optimization",
+    ],
   },
 ];
 
-export const writingEntries: readonly WritingEntry[] = [
-  {
-    title: "Does Tabular ICL Need the Entire Training Set?",
-    kind: "Research Note",
-    status: "upcoming",
-    year: 2026,
-    summary:
-      "Full-context inference, retrieval and the scalability problem for structured-data foundation models.",
-  },
-  {
-    title: "Dissecting Relational In-Context Learning",
-    kind: "Research Note",
-    status: "upcoming",
-    year: 2026,
-    summary:
-      "What recent relational foundation models tell us about context construction, support labels and cross-database generalization.",
-  },
-  {
-    title: "From Feature Engineering to Relational Foundation Models",
-    kind: "Research Note",
-    status: "upcoming",
-    year: 2026,
-    summary:
-      "Why relational databases provide a natural substrate for end-to-end representation learning.",
-  },
-];
+export const writingEntries: readonly WritingEntry[] = [];
 
 export const founders: readonly FounderProfile[] = [
   {

@@ -88,18 +88,35 @@
   background: color-mix(in oklch, var(--surface) 58%, var(--background));
 }
 
-.publication-disclosure {
-  width: fit-content;
-  margin: 0 0 1.25rem auto;
+.writing-list {
+  border-top: 1px solid var(--border-strong);
+}
+
+.writing-coming-soon {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.42fr) minmax(0, 1.73fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: baseline;
+  padding-block: clamp(1.7rem, 3.2vw, 2.6rem);
+  border-block: 1px solid var(--border-strong);
+}
+
+.writing-coming-soon p {
+  margin: 0;
+}
+
+.writing-coming-soon p:first-child {
   color: var(--accent);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 0.66rem;
-  letter-spacing: 0.055em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.07em;
 }
 
-.writing-list {
-  border-top: 1px solid var(--border-strong);
+.writing-coming-soon p:last-child {
+  color: var(--muted);
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  letter-spacing: -0.025em;
 }
 
 .writing-row {
@@ -129,6 +146,15 @@
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.25;
+}
+
+.writing-title-link {
+  color: inherit;
+  transition: color 160ms ease;
+}
+
+.writing-title-link:hover {
+  color: var(--accent);
 }
 
 .writing-summary {
@@ -179,6 +205,7 @@
     gap: 1.25rem;
   }
 
+  .writing-coming-soon,
   .writing-row {
     grid-template-columns: 1fr;
     gap: 0.8rem;
@@ -186,10 +213,5 @@
 
   .writing-summary {
     grid-column: auto;
-  }
-
-  .publication-disclosure {
-    width: auto;
-    margin-left: 0;
   }
 }

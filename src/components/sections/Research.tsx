@@ -10,8 +10,9 @@ export function Research() {
             <h2>Research</h2>
           </div>
           <p>
-            We are interested in the model and systems layer underneath the next generation of
-            structured-data machine learning.
+            We study what comes after the first convincing structured-data foundation models: how
+            relational and tabular learning fit together, how context can be made efficient, and how
+            predictions can support decisions.
           </p>
         </div>
 
