@@ -1,12 +1,12 @@
-# StructureML V0 implementation specification
+# StructureML V0 site requirements
 
-This document is the durable source of truth for StructureML V0. Read it before changing public copy, founders, legal wording, links, architecture, or visual direction.
+This document defines the maintained product, editorial, legal, visual, and engineering requirements for the StructureML landing page.
 
 ## Purpose and positioning
 
 StructureML is an early-stage, unincorporated independent ML research initiative focused on foundational machine learning for structured data.
 
-The intended production domain is structureml.com. The domain has been purchased, but domain ownership must never be presented as trademark registration, incorporation, or exclusive legal rights.
+The production domain is structureml.com. Domain ownership must never be presented as trademark registration, incorporation, or exclusive legal rights.
 
 The site should feel approximately 80% serious ML research lab and 20% ambitious infrastructure startup. It must establish technical seriousness, explain the structured-data thesis, provide a future home for research, writing, experiments and open-source work, show current research interests, and include only a restrained placeholder for a future product.
 
@@ -23,7 +23,7 @@ Do not imply that StructureML has built its own foundation model or demonstrated
 - Do not claim that StructureML is trademarked or registered.
 - Do not use Ltd, Limited, LLP, Inc., Corporation, registered company, incorporated, or wording that presents StructureML as a separate legal person.
 - Call StructureML an “independent research initiative,” never a company.
-- The founders’ employer has permitted the activity, but that is private governance context. Do not name the employer or mention permission, affiliation, sponsorship, endorsement, investment, or partnership.
+- Do not name the founders' employers or imply affiliation, sponsorship, endorsement, investment, or partnership.
 - The MIT license and footer copyright owner is “Tony Kwok and Billy Zhao.”
 - Do not add an Organization legal-entity schema, company number, registered office, trademark notice, or incorporation statement.
 - Cite third-party research as external work only. Do not imply ownership, partnership, endorsement, customer relationships, product dependencies, or independent validation by StructureML.
@@ -31,7 +31,7 @@ Do not imply that StructureML has built its own foundation model or demonstrated
 
 ## Route and navigation
 
-Build one route, /, with smooth anchor navigation:
+The site has one route, `/`, with smooth anchor navigation:
 
 - StructureML → #top
 - Research → #research
@@ -40,9 +40,9 @@ Build one route, /, with smooth anchor navigation:
 - About → #about
 - GitHub → disabled coming-soon state
 
-Use a sticky desktop header and accessible mobile disclosure menu. Store the future organization GitHub URL centrally as null. The header and footer show non-link GitHub text with aria-disabled and a visible Soon label. The hero shows a disabled GitHub button. A future non-null URL must enable all three destinations. Never link to Tony’s or Billy’s personal GitHub or any existing public codebase.
+Use a sticky desktop header and accessible mobile disclosure menu. Store the StructureML GitHub URL centrally as `githubUrl`, which is currently `null`. The header and footer show non-link GitHub text with `aria-disabled` and a visible Soon label. The hero shows a disabled GitHub button. A future non-null URL must enable all three destinations. Never substitute Tony's or Billy's personal GitHub profiles.
 
-## Exact public content
+## Public content
 
 ### Hero
 
@@ -72,7 +72,7 @@ It includes a visible Coming soon status.
 
 ### Hero relational diagram
 
-Implement one focused presentation component named RelationalDiagram. It is not a database, schema framework, relational application architecture, or reusable component system.
+`RelationalDiagram` is a focused presentation component. It is not a database, schema framework, relational application architecture, or reusable component system.
 
 Display:
 
@@ -149,14 +149,14 @@ Callout:
 
 > We believe structured-data foundation models are at a GPT-2 moment: the core capability is visible, but the field has not yet reached its GPT-3 breakthrough. Getting there will require advances in data, context efficiency, adaptation and decision learning—not scale alone.
 
-Approved citation destinations:
+Citation destinations:
 
 - Relational Transformer — ICLR 2026 — https://openreview.net/forum?id=rpPtgMC5s9
 - KumoRFM-2 — Preprint · 2026 — https://arxiv.org/abs/2604.12596
 - RT-J — Preprint · 2026 — https://openreview.net/forum?id=oQINTd9din
 - OpenRFM — Preprint · 2026 — https://arxiv.org/abs/2606.04320
 
-These citations are external research, not StructureML publications. Render them only as inline links inside the state-of-the-field prose; do not display a standalone “Selected external research” heading, publication list, card group, or other treatment that could imply authorship. Open each in a new tab with safe external-link attributes and accessible new-tab text.
+These citations are external research, not StructureML publications. Render them only as inline links inside the state-of-the-field prose; do not display them as a standalone publication list, card group, or other treatment that could imply authorship. Open each in a new tab with safe external-link attributes and accessible new-tab text.
 
 Keep the comparison exploratory. Do not say foundation models have replaced feature engineering or conventional supervised learning.
 
@@ -242,7 +242,7 @@ Disabled control:
 
 Prototype coming soon
 
-Use a restrained conceptual frame clearly labelled non-functional. Do not imply working technology, fabricate features, build the prototype, assume it is a decision engine, or reuse SubCore/subscription functionality.
+Use a restrained conceptual frame clearly labelled non-functional. Do not imply working technology, fabricate features, build the prototype, or assume an eventual product direction.
 
 ### Technical direction
 
@@ -308,7 +308,7 @@ LinkedIn ↗
 
 https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/
 
-Render both founders with equal visual weight. Show only each approved name, the shared Co-founder role, and the supplied LinkedIn destination; do not display biographies, employer names, employer permission statements, Spotify branding, affiliations, endorsements, founder GitHub links, or placeholder text. LinkedIn links open in a new tab with safe external-link attributes and accessible new-tab text.
+Render both founders with equal visual weight. Show only each configured name, the shared Co-founder role, and the supplied LinkedIn destination; do not display biographies, employer names or branding, affiliations, endorsements, founder GitHub links, or placeholder text. LinkedIn links open in a new tab with safe external-link attributes and accessible new-tab text.
 
 ### Footer
 
@@ -356,7 +356,7 @@ Page composition:
 
 Do not use purple-to-blue gradients, gradient text, glassmorphism, glowing orbs, floating neural networks, generic AI artwork, excessive rounded rectangles, large decorative shadows, forced dark mode, or trademark symbols.
 
-Reuse only the SubCore reference’s quality patterns: semantic OKLCH tokens, consistent gutters, section rhythm, sticky-header treatment, mono labels, masked technical grid, and restrained transitions. Do not copy its branding, layout, product logic, forced dark palette, Supabase, Lovable setup, or component bulk.
+Use semantic OKLCH tokens, consistent gutters, measured section rhythm, a restrained sticky-header treatment, monospaced technical labels, a subtle masked grid, and short transitions. Keep these patterns specific to StructureML's research-led identity, with dependencies and component scope proportional to the single-page site.
 
 ## Accessibility and interaction
 
@@ -379,21 +379,21 @@ Writing statuses: upcoming, published.
 
 Link destinations: internal, github, arxiv, external.
 
-Research references contain title, citation/status detail, and an HTTPS URL. Initial references are the four external works cited inline in the Thesis section.
+Research references contain title, citation/status detail, and an HTTPS URL. Current references are the four external works cited inline in the Thesis section.
 
-Founder entries contain name, role, and an approved LinkedIn URL.
+Founder entries contain name, role, and a configured LinkedIn URL.
 
-Initial links:
+Current links:
 
 - githubUrl: null
 - contactEmail: info@structureml.com
 
-Initial founders:
+Current founders:
 
 - Tony Kwok; Co-founder; https://www.linkedin.com/in/tonykwokch/
 - Billy Zhao; Co-founder; https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/
 
-Initial writing entries: none. Render the approved coming-soon state while the collection is empty.
+Current writing entries: none. Render the documented coming-soon state while the collection is empty.
 
 Centralize navigation, research areas, writing entries, founders, and links in one typed content module. Do not create a CMS, schema engine, generic component framework, or speculative abstraction.
 
@@ -423,38 +423,12 @@ Scripts must include dev, build, preview, format, format:check, lint, typecheck,
 
 Use Prettier, type-aware ESLint, Vitest, Testing Library, user-event, Playwright Chromium, and Axe Playwright.
 
-Tests cover exact public copy, anchors, disabled GitHub states, info@structureml.com, both co-founders and their approved LinkedIn destinations, the absence of founder biographies and employer references, the empty writing state, external citation URLs and link safety, the attributed GPT-2/GPT-3 thesis, disabled prototype, exact research tags, technical-direction stages, mobile menu keyboard behavior, relational diagram structure, reduced motion, responsive overflow, metadata, landmarks, accessibility, production serving, and the absence of trademark/company/employer/affiliation claims.
+Tests cover exact public copy, anchors, disabled GitHub states, info@structureml.com, both co-founders and their configured LinkedIn destinations, the absence of founder biographies and employer references, the empty writing state, external citation URLs and link safety, the attributed GPT-2/GPT-3 thesis, disabled prototype, exact research tags, technical-direction stages, mobile menu keyboard behavior, relational diagram structure, reduced motion, responsive overflow, metadata, landmarks, accessibility, production serving, and the absence of trademark/company/employer/affiliation claims.
 
 CI runs on pull requests and pushes to main with read-only contents permission, concurrency cancellation, a 20-minute timeout, SHA-pinned actions, Node 24/npm caching, npm ci, format check, lint, typecheck, component tests, Chromium installation, Playwright tests, and build.
 
-Add weekly Dependabot updates for npm and GitHub Actions.
+Dependabot checks npm and GitHub Actions weekly.
 
-Prepare Vercel with framework vite, npm run build, dist output, no catch-all rewrite, and static security headers. No deployment workflow, secrets, or environment variables.
+Vercel uses framework `vite`, `npm run build`, `dist` output, no catch-all rewrite, and static security headers. The application has no deployment workflow, secrets, or environment variables.
 
-Do not create GitHub/Vercel infrastructure, DNS records, deployments, or public code links.
-
-## Commit sequence
-
-1. docs: establish StructureML V0 specification
-2. build: scaffold the StructureML frontend
-3. feat: establish the StructureML visual system and navigation
-4. feat: add the hero and structured-data thesis
-5. feat: add research and writing sections
-6. feat: add prototype direction and founding team
-7. feat: animate the relational research diagram
-8. test: cover StructureML landing-page journeys
-9. ci: add deterministic quality and Vercel gates
-10. docs: finalize development and deployment guidance
-
-Research-positioning revision:
-
-11. docs: define the evidence-led research positioning
-12. feat: add cited field evidence and authored thesis
-13. feat: focus research and simplify writing
-14. feat: extend technical direction to decision learning
-15. test: lock research claims and citation behavior
-16. docs: align repository guidance with the research agenda
-
-After commit 1 on main, create feat/structureml-v0. Make no further feature changes directly on main. Each commit must be focused, reviewable, and valid. Do not merge, push, open a pull request, publish, or deploy.
-
-At handoff, run npm ci, install Chromium, run npm run check, inspect desktop/tablet/mobile screenshots, confirm the reference repositories are clean, show the feature-branch commit log and diff summary, and leave the site running at http://127.0.0.1:5173.
+Repository administration, Vercel project settings, deployments, and DNS are managed outside application code. Keep their documented build and domain assumptions aligned with this repository.
