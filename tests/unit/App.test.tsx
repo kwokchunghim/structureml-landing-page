@@ -27,6 +27,65 @@ describe("StructureML landing page", () => {
     ).toBeInTheDocument();
   });
 
+  it("attributes the research thesis and cites selected external work", () => {
+    render(<App />);
+
+    expect(
+      screen.getByText(
+        "Much of enterprise machine learning still begins by compressing relational data into manually designed feature tables. Recent work in tabular and relational foundation models now demonstrates a credible alternative: pretrained systems that learn more directly from structured data and adapt across prediction tasks.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "We believe structured-data foundation models are at a GPT-2 moment: the core capability is visible, but the field has not yet reached its GPT-3 breakthrough. Getting there will require advances in data, context efficiency, adaptation and decision learning—not scale alone.",
+      ),
+    ).toBeInTheDocument();
+
+    const referenceList = screen.getByRole("list", { name: "Selected external research" });
+    const references = [
+      {
+        title: "Relational Transformer",
+        citation: "ICLR 2026",
+        relevance:
+          "Cross-database and cross-task relational prediction without downstream weight updates.",
+        href: "https://openreview.net/forum?id=rpPtgMC5s9",
+      },
+      {
+        title: "KumoRFM-2",
+        citation: "Preprint · 2026",
+        relevance:
+          "Few-shot prediction across connected tables with task conditioning and scalable relational retrieval.",
+        href: "https://arxiv.org/abs/2604.12596",
+      },
+      {
+        title: "RT-J",
+        citation: "Preprint · 2026",
+        relevance:
+          "Context-efficient relational prediction using task-relevant evidence retrieved from the database.",
+        href: "https://openreview.net/forum?id=oQINTd9din",
+      },
+      {
+        title: "OpenRFM",
+        citation: "Preprint · 2026",
+        relevance: "A dual-stage design combining relational and tabular in-context learning.",
+        href: "https://arxiv.org/abs/2606.04320",
+      },
+    ] as const;
+
+    references.forEach((reference) => {
+      const link = within(referenceList).getByRole("link", {
+        name: new RegExp(reference.title, "u"),
+      });
+      const row = link.closest("li");
+      expect(row).not.toBeNull();
+      expect(link).toHaveAttribute("href", reference.href);
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+      expect(within(row as HTMLElement).getByText(reference.citation)).toBeInTheDocument();
+      expect(within(row as HTMLElement).getByText(reference.relevance)).toBeInTheDocument();
+    });
+  });
+
   it("provides the required anchor navigation and contact destination", () => {
     render(<App />);
 

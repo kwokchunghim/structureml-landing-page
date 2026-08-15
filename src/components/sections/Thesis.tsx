@@ -1,3 +1,5 @@
+import { researchPositioning } from "../../content/site";
+
 const conventionalPipeline = [
   "Relational database",
   "SQL joins + aggregations",
@@ -46,13 +48,51 @@ export function Thesis() {
           <p>
             Much of enterprise machine learning still begins by compressing relational data into
             manually designed feature tables. Recent work in tabular and relational foundation
-            models suggests another possibility: models that learn more directly from the structure
-            of the underlying data and adapt to new prediction tasks through pretraining and
-            in-context learning.
+            models now demonstrates a credible alternative: pretrained systems that learn more
+            directly from structured data and adapt across prediction tasks.
           </p>
           <p>
-            StructureML explores the modelling and systems problems required to make this practical.
+            StructureML studies what remains unresolved: how relational and tabular learning should
+            work together, how models can select sufficient context efficiently, and how predictive
+            representations can support decisions under objectives, constraints and feedback.
           </p>
+        </div>
+
+        <div className="field-evidence" aria-labelledby="field-evidence-heading">
+          <div className="field-evidence-copy">
+            <p className="eyebrow">State of the field</p>
+            <h3 id="field-evidence-heading">
+              The capability is visible. The frontier is still open.
+            </h3>
+            <p className="field-evidence-intro">{researchPositioning.introduction}</p>
+            <blockquote className="research-thesis">
+              <p className="research-thesis-label">StructureML thesis</p>
+              <p>{researchPositioning.thesis}</p>
+            </blockquote>
+          </div>
+
+          <div className="evidence-references">
+            <h4 id="evidence-list-heading">Selected external research</h4>
+            <ol aria-labelledby="evidence-list-heading" className="evidence-list">
+              {researchPositioning.references.map((reference) => (
+                <li key={reference.title}>
+                  <a
+                    className="evidence-link"
+                    href={reference.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="evidence-title">{reference.title}</span>
+                    <span className="evidence-citation">
+                      {reference.citation} <span aria-hidden="true">↗</span>
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </span>
+                  </a>
+                  <p>{reference.relevance}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>
