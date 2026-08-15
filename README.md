@@ -2,7 +2,7 @@
 
 Production landing page for StructureML, an independent research initiative exploring foundational machine learning for structured data.
 
-The V0 site is intentionally a research-led homepage, not a mature SaaS product. It explains the thesis, current research questions, upcoming writing concepts, exploratory technical direction, and a restrained non-functional product placeholder. The intended production domain is `structureml.com`.
+The V0 site is intentionally a research-led homepage, not a mature SaaS product. It explains the thesis, current research questions, an honest writing coming-soon state, exploratory technical direction, and a restrained non-functional product placeholder. The intended production domain is `structureml.com`.
 
 The complete content, legal, visual, engineering, and release contract lives in [docs/structureml-v0-spec.md](docs/structureml-v0-spec.md). Read it before changing public copy, founders, links, positioning, architecture, or deployment behavior.
 
@@ -10,12 +10,18 @@ The complete content, legal, visual, engineering, and release contract lives in 
 
 - One static route at `/` with anchor navigation.
 - No backend, API routes, database, authentication, analytics, secrets, or environment variables.
-- No functioning product prototype, published research claims, or fabricated external links.
+- No functioning product prototype, StructureML publications, or unreported StructureML results.
 - GitHub destinations remain visibly disabled until a real repository URL is approved.
-- Writing concepts are labelled upcoming and are not links.
+- Research & Writing displays only `COMING SOON` and contains no promised titles, dates, or links.
 - Tony Kwok and Billy Zhao are shown as co-founders; Billy's profile remains `Information TBC.` until approved information is supplied.
 
-StructureML is currently described only as an unincorporated independent research initiative. Do not add trademark symbols, a company suffix, incorporation language, employer references, affiliations, or endorsements. The MIT license covers the repository source; it does not make a trademark or incorporation claim.
+StructureML is currently described only as an unincorporated independent research initiative. Do not add trademark symbols, a company suffix, incorporation language, employer references, affiliations, or endorsements. GPT-2 and GPT-3 appear only in an attributed historical analogy; they are not StructureML branding and do not imply OpenAI affiliation. The MIT license covers the repository source; it does not make a trademark or incorporation claim.
+
+## Research positioning
+
+The homepage cites four external primary sources—Relational Transformer, KumoRFM-2, RT-J, and OpenRFM—as evidence that the technical direction is credible. These references are visibly separated from StructureML's own empty writing section, use qualitative rather than numeric claims, and retain their conference/preprint status labels.
+
+The public thesis remains exploratory. It does not claim that StructureML built the cited models, that structured-data foundation models are solved, or that predictive benchmarks establish decision quality. Prediction-to-decisioning is presented as an open research problem spanning context, objectives, constraints, feedback, optimization, contextual bandits, and reinforcement learning—not as prototype functionality.
 
 ## Technology
 
@@ -93,9 +99,9 @@ docs/             Durable V0 specification
 .github/          CI and dependency automation
 ```
 
-`src/App.tsx` explicitly composes the page. `src/content/site.ts` centralizes navigation, research areas, upcoming writing, founders, contact details, and nullable GitHub/social destinations. Keep content changes there unless the content is inseparable from a section's explanatory structure.
+`src/App.tsx` explicitly composes the page. `src/content/site.ts` centralizes navigation, external research evidence, research areas, the empty writing collection, founders, contact details, and nullable GitHub/social destinations. Keep content changes there unless the content is inseparable from a section's explanatory structure.
 
-To publish a future writing entry, change its status only when the destination exists, then add a typed `internal`, `github`, `arxiv`, or `external` link and update rendering/tests in the same change. Do not turn placeholder concepts into links pre-emptively.
+To publish future work, add a typed Research Note, Experiment, Paper, or Code entry only when its content and destination exist. Set its status deliberately, add an `internal`, `github`, `arxiv`, or `external` link, and update rendering/tests in the same change. Do not add speculative titles or links pre-emptively.
 
 ## Foundation decision
 
@@ -109,11 +115,12 @@ The two SubCore repositories were reference material only and were not modified.
 
 The test suite focuses on behavior that matters for this landing page:
 
-- Approved positioning, research content, founders, and legal wording.
+- Approved positioning, attributed research thesis, exact external citations, founders, and legal wording.
 - Anchor destinations, contact link, and disabled GitHub/prototype states.
 - Mobile-menu keyboard interaction and focus restoration.
 - Relational schema and relationship semantics.
-- Upcoming writing entries remaining visibly unpublished and unlinked.
+- The writing collection remaining visibly empty, unpublished, and unlinked.
+- External-link safety and the absence of StructureML model/result claims or universal context-complexity claims.
 - Reduced-motion behavior and responsive overflow at 390, 768, and 1440 pixels.
 - Production metadata/static assets and serious Axe findings.
 
