@@ -72,6 +72,8 @@ describe("StructureML landing page", () => {
       },
     ] as const;
 
+    expect(within(referenceList).getAllByRole("listitem")).toHaveLength(references.length);
+
     references.forEach((reference) => {
       const link = within(referenceList).getByRole("link", {
         name: new RegExp(reference.title, "u"),
@@ -294,7 +296,7 @@ describe("StructureML landing page", () => {
 
     expect(publicText).not.toMatch(/[™®]/u);
     expect(publicText).not.toMatch(
-      /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
+      /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|LLP|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
     );
     expect(publicText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
     expect(publicText).not.toContain("O(N)");

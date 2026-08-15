@@ -109,6 +109,7 @@ test("attributes external research and keeps StructureML writing unpublished", a
   );
 
   const referenceList = page.getByRole("list", { name: "Selected external research" });
+  await expect(referenceList.getByRole("listitem")).toHaveCount(externalReferences.length);
   for (const reference of externalReferences) {
     const link = referenceList.getByRole("link", { name: new RegExp(reference.title, "u") });
     const row = link.locator("..");
@@ -328,7 +329,7 @@ test("keeps public legal language restrained", async ({ page }) => {
 
   expect(bodyText).not.toMatch(/[™®]/u);
   expect(bodyText).not.toMatch(
-    /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
+    /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|LLP|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
   );
   expect(bodyText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
   expect(bodyText).not.toContain("O(N)");
