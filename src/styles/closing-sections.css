@@ -270,7 +270,7 @@
 
 .founder-profile {
   display: grid;
-  min-height: 18rem;
+  min-height: 13rem;
   grid-template-rows: 1fr auto;
   padding: clamp(1.7rem, 3.5vw, 3rem);
   border-bottom: 1px solid var(--border-strong);
@@ -296,11 +296,28 @@
   text-transform: uppercase;
 }
 
-.founder-bio {
-  max-width: 31rem;
-  margin: 3rem 0 0;
+.founder-link {
+  display: inline-flex;
+  width: max-content;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: end;
   color: var(--muted);
-  line-height: 1.66;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.22em;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.founder-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 @media (max-width: 62rem) {
@@ -361,7 +378,7 @@
   }
 
   .founder-profile {
-    min-height: 15rem;
+    min-height: 11rem;
     padding-inline: 0;
   }
 

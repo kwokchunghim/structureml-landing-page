@@ -1,8 +1,6 @@
 export interface SiteLinks {
   githubUrl: string | null;
   contactEmail: string;
-  founderGithubUrl: null;
-  founderLinkedInUrl: null;
 }
 
 export interface NavigationItem {
@@ -47,20 +45,15 @@ export interface WritingEntry {
   link?: WritingLink;
 }
 
-export type FounderProfileStatus = "complete" | "tbc";
-
 export interface FounderProfile {
   name: string;
   role: "Co-founder";
-  bio: string;
-  status: FounderProfileStatus;
+  linkedinUrl: string;
 }
 
 export const siteLinks: SiteLinks = {
   githubUrl: null,
   contactEmail: "info@structureml.com",
-  founderGithubUrl: null,
-  founderLinkedInUrl: null,
 };
 
 export const navigationItems: readonly NavigationItem[] = [
@@ -134,13 +127,11 @@ export const founders: readonly FounderProfile[] = [
   {
     name: "Tony Kwok",
     role: "Co-founder",
-    bio: "Machine learning engineer based in London, interested in production ML, structured-data foundation models and learning systems.",
-    status: "complete",
+    linkedinUrl: "https://www.linkedin.com/in/tonykwokch/",
   },
   {
     name: "Billy Zhao",
     role: "Co-founder",
-    bio: "Information TBC.",
-    status: "tbc",
+    linkedinUrl: "https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/",
   },
 ];

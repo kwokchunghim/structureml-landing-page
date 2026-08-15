@@ -268,15 +268,28 @@ describe("StructureML landing page", () => {
     expect(tony).not.toBeNull();
     expect(billy).not.toBeNull();
     expect(within(tony as HTMLElement).getByText("Co-founder")).toBeInTheDocument();
+    expect(within(billy as HTMLElement).getByText("Co-founder")).toBeInTheDocument();
+
+    for (const [profile, name, href] of [
+      [tony, "Tony Kwok", "https://www.linkedin.com/in/tonykwokch/"],
+      [billy, "Billy Zhao", "https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/"],
+    ] as const) {
+      const link = within(profile as HTMLElement).getByRole("link", {
+        name: new RegExp(`LinkedIn profile for ${name}`, "u"),
+      });
+      expect(link).toHaveAttribute("href", href);
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    }
+
+    expect(screen.queryByText("Information TBC.")).not.toBeInTheDocument();
     expect(
-      within(tony as HTMLElement).getByText(
+      screen.queryByText(
         "Machine learning engineer based in London, interested in production ML, structured-data foundation models and learning systems.",
       ),
-    ).toBeInTheDocument();
-    expect(within(billy as HTMLElement).getByText("Co-founder")).toBeInTheDocument();
-    expect(within(billy as HTMLElement).getByText("Information TBC.")).toBeInTheDocument();
-    expect(within(tony as HTMLElement).queryByRole("link")).not.toBeInTheDocument();
-    expect(within(billy as HTMLElement).queryByRole("link")).not.toBeInTheDocument();
+    ).not.toBeInTheDocument();
+    expect(tony?.querySelector(".founder-bio")).toBeNull();
+    expect(billy?.querySelector(".founder-bio")).toBeNull();
   });
 
   it("describes the complete relational schema and relationship set", () => {
@@ -306,6 +319,7 @@ describe("StructureML landing page", () => {
     );
     expect(publicText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
     expect(publicText).not.toContain("O(N)");
+    expect(publicText).not.toContain("Spotify");
     expect(publicText).toContain("independent research initiative");
     expect(publicText).toContain("© 2026 Tony Kwok and Billy Zhao");
   });

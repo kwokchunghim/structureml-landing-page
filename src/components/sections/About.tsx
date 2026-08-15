@@ -28,12 +28,20 @@ export function About() {
         </div>
         <div className="founder-grid">
           {founders.map((founder) => (
-            <article className="founder-profile" data-status={founder.status} key={founder.name}>
+            <article className="founder-profile" key={founder.name}>
               <div>
                 <h3>{founder.name}</h3>
                 <p className="founder-role">{founder.role}</p>
               </div>
-              <p className="founder-bio">{founder.bio}</p>
+              <a
+                className="founder-link"
+                href={founder.linkedinUrl}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                LinkedIn <span aria-hidden="true">↗</span>
+                <span className="sr-only"> profile for {founder.name} (opens in a new tab)</span>
+              </a>
             </article>
           ))}
         </div>

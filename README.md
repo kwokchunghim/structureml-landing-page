@@ -13,7 +13,7 @@ The complete content, legal, visual, engineering, and release contract lives in 
 - No functioning product prototype, StructureML publications, or unreported StructureML results.
 - GitHub destinations remain visibly disabled until a real repository URL is approved.
 - Research & Writing displays only `COMING SOON` and contains no promised titles, dates, or links.
-- Tony Kwok and Billy Zhao are shown as co-founders; Billy's profile remains `Information TBC.` until approved information is supplied.
+- Tony Kwok and Billy Zhao are shown with equal weight as co-founders, using only their approved LinkedIn destinations and no founder biographies or employer references.
 
 StructureML is currently described only as an unincorporated independent research initiative. Do not add trademark symbols, a company suffix, incorporation language, employer references, affiliations, or endorsements. GPT-2 and GPT-3 appear only in an attributed historical analogy; they are not StructureML branding and do not imply OpenAI affiliation. The MIT license covers the repository source; it does not make a trademark or incorporation claim.
 
@@ -99,7 +99,7 @@ docs/             Durable V0 specification
 .github/          CI and dependency automation
 ```
 
-`src/App.tsx` explicitly composes the page. `src/content/site.ts` centralizes navigation, external research evidence, research areas, the empty writing collection, founders, contact details, and nullable GitHub/social destinations. Keep content changes there unless the content is inseparable from a section's explanatory structure.
+`src/App.tsx` explicitly composes the page. `src/content/site.ts` centralizes navigation, external research evidence, research areas, the empty writing collection, founders, approved founder LinkedIn destinations, contact details, and the nullable site GitHub destination. Keep content changes there unless the content is inseparable from a section's explanatory structure.
 
 To publish future work, add a typed Research Note, Experiment, Paper, or Code entry only when its content and destination exist. Set its status deliberately, add an `internal`, `github`, `arxiv`, or `external` link, and update rendering/tests in the same change. Do not add speculative titles or links pre-emptively.
 

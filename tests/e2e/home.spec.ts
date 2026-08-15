@@ -185,12 +185,28 @@ for (const viewport of [
 
 test("stacks founders on mobile and gives them equal desktop weight", async ({ page }) => {
   await page.goto("/");
-  const tony = page
-    .getByRole("heading", { name: "Tony Kwok" })
-    .locator("..", { hasText: "Co-founder" });
-  const billy = page
-    .getByRole("heading", { name: "Billy Zhao" })
-    .locator("..", { hasText: "Co-founder" });
+  const founders = page.locator(".founder-grid");
+  const tony = founders.locator("article", {
+    has: page.getByRole("heading", { name: "Tony Kwok" }),
+  });
+  const billy = founders.locator("article", {
+    has: page.getByRole("heading", { name: "Billy Zhao" }),
+  });
+
+  for (const [profile, name, href] of [
+    [tony, "Tony Kwok", "https://www.linkedin.com/in/tonykwokch/"],
+    [billy, "Billy Zhao", "https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/"],
+  ] as const) {
+    const link = profile.getByRole("link", {
+      name: new RegExp(`LinkedIn profile for ${name}`, "u"),
+    });
+    await expect(link).toHaveAttribute("href", href);
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  }
+
+  await expect(page.getByText("Information TBC.", { exact: true })).toHaveCount(0);
+  await expect(page.locator(".founder-bio")).toHaveCount(0);
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   const tonyDesktop = await tony.boundingBox();
@@ -330,6 +346,7 @@ test("keeps public legal language restrained", async ({ page }) => {
   );
   expect(bodyText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
   expect(bodyText).not.toContain("O(N)");
+  expect(bodyText).not.toContain("Spotify");
   expect(bodyText).toContain("Independent research initiative.");
   expect(bodyText).toContain("© 2026 Tony Kwok and Billy Zhao");
 });
