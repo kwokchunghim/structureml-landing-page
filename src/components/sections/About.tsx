@@ -15,8 +15,9 @@ export function About() {
               learning for structured data.
             </p>
             <p>
-              We study relational and tabular foundation models, in-context learning, and the
-              systems required to make these approaches practical at real-world scale.
+              We study how relational and tabular foundation models can work together, how
+              structured context can be selected efficiently, and how predictive systems can support
+              decisions under real-world objectives, constraints and feedback.
             </p>
           </div>
         </div>

@@ -208,6 +208,34 @@ describe("StructureML landing page", () => {
     expect(screen.queryByText("COMING SOON")).not.toBeInTheDocument();
   });
 
+  it("connects structured data to decision learning without presenting a product funnel", () => {
+    render(<App />);
+
+    const heading = screen.getByRole("heading", { name: "What we're exploring" });
+    const section = heading.closest("section");
+    expect(section).not.toBeNull();
+    expect(
+      within(section as HTMLElement).getByText(
+        "Prediction is not decisioning. We are exploring how pretrained representations and task-relevant context could support outcome models, then policies shaped by objectives, constraints, feedback and the balance between exploration and exploitation.",
+      ),
+    ).toBeInTheDocument();
+
+    const flow = within(section as HTMLElement).getByRole("list");
+    const steps = [
+      ["Structured data", "Tables + relationships"],
+      ["Shared representations", "Relational + tabular models"],
+      ["Context-efficient adaptation", "Retrieved support + neighbourhoods"],
+      ["Outcome prediction", "Task-conditioned estimates"],
+      ["Decision learning", "Objectives + constraints + feedback"],
+    ] as const;
+
+    steps.forEach(([stage, label]) => {
+      const item = within(flow).getByText(stage).closest("li");
+      expect(item).not.toBeNull();
+      expect(within(item as HTMLElement).getByText(label)).toBeInTheDocument();
+    });
+  });
+
   it("presents a clearly non-functional prototype placeholder", () => {
     render(<App />);
 
@@ -219,6 +247,12 @@ describe("StructureML landing page", () => {
 
   it("renders both co-founders with only the approved information", () => {
     render(<App />);
+
+    expect(
+      screen.getByText(
+        "We study how relational and tabular foundation models can work together, how structured context can be selected efficiently, and how predictive systems can support decisions under real-world objectives, constraints and feedback.",
+      ),
+    ).toBeInTheDocument();
 
     const tony = screen.getByRole("heading", { name: "Tony Kwok" }).closest("article");
     const billy = screen.getByRole("heading", { name: "Billy Zhao" }).closest("article");

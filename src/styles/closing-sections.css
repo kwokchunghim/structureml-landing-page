@@ -164,6 +164,14 @@
   max-width: 52rem;
 }
 
+.direction-intro {
+  max-width: 47rem;
+  margin: 1.65rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  line-height: 1.7;
+}
+
 .direction-flow {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));

@@ -1,9 +1,9 @@
 const explorationSteps = [
   { stage: "Structured data", label: "Tables + relationships" },
-  { stage: "Representation learning", label: "Structured foundation models" },
-  { stage: "In-context learning", label: "Task adaptation" },
-  { stage: "Efficient context selection", label: "Retrieval / context efficiency" },
-  { stage: "Predictions on new tasks", label: "Predictions" },
+  { stage: "Shared representations", label: "Relational + tabular models" },
+  { stage: "Context-efficient adaptation", label: "Retrieved support + neighbourhoods" },
+  { stage: "Outcome prediction", label: "Task-conditioned estimates" },
+  { stage: "Decision learning", label: "Objectives + constraints + feedback" },
 ] as const;
 
 export function TechnicalDirection() {
@@ -13,6 +13,11 @@ export function TechnicalDirection() {
         <div className="section-heading direction-heading">
           <p className="eyebrow">Technical direction</p>
           <h2 id="direction-heading">What we're exploring</h2>
+          <p className="direction-intro">
+            Prediction is not decisioning. We are exploring how pretrained representations and
+            task-relevant context could support outcome models, then policies shaped by objectives,
+            constraints, feedback and the balance between exploration and exploitation.
+          </p>
         </div>
 
         <ol className="direction-flow">
