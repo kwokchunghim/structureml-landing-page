@@ -50,10 +50,10 @@ const relationships = [
 function SchemaCard({ table }: { table: SchemaTable }) {
   return (
     <article className={`schema-card ${table.className}`}>
-      <header>
+      <div className="schema-card-heading">
         <span className="schema-icon" aria-hidden="true" />
         <h3>{table.name}</h3>
-      </header>
+      </div>
       <dl>
         {table.fields.map((field) => (
           <div className="schema-field" key={field.name}>
