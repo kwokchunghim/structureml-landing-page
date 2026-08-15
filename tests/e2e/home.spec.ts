@@ -1,6 +1,43 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+const pageDescription =
+  "StructureML researches models that learn directly from tables, entities and relationships — and the systems needed to make them useful at scale.";
+
+test("serves production metadata and indexable static assets", async ({ page, request }) => {
+  const response = await page.goto("/");
+  expect(response?.status()).toBe(200);
+
+  await expect(page).toHaveTitle("StructureML — Foundational ML for structured data");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+    "content",
+    pageDescription,
+  );
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://structureml.com/",
+  );
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    "content",
+    "https://structureml.com/",
+  );
+  await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
+    "content",
+    pageDescription,
+  );
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary");
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute("href", "/favicon.svg");
+
+  const robots = await request.get("/robots.txt");
+  expect(robots.ok()).toBe(true);
+  expect(await robots.text()).toContain("Sitemap: https://structureml.com/sitemap.xml");
+
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.ok()).toBe(true);
+  expect(await sitemap.text()).toContain("<loc>https://structureml.com/</loc>");
+});
+
 test("serves the complete landing page with working anchors and disabled placeholders", async ({
   page,
 }) => {
