@@ -23,8 +23,9 @@ export interface ResearchReference {
 
 export interface ResearchPositioning {
   thesis: string;
-  transferReferences: readonly ResearchReference[];
-  methodReferences: readonly ResearchReference[];
+  tabularReferences: readonly ResearchReference[];
+  relationalReferences: readonly ResearchReference[];
+  integrationReferences: readonly ResearchReference[];
 }
 
 export type WritingKind = "Research Note" | "Experiment" | "Paper" | "Code";
@@ -66,7 +67,19 @@ export const navigationItems: readonly NavigationItem[] = [
 export const researchPositioning: ResearchPositioning = {
   thesis:
     "We believe structured-data foundation models are at a GPT-2 moment: the core capability is visible, but the field has not yet reached its GPT-3 breakthrough. Getting there will require advances in data, context efficiency, adaptation and decision learning—not scale alone.",
-  transferReferences: [
+  tabularReferences: [
+    {
+      title: "TabPFN v2",
+      citation: "Nature · 2025",
+      href: "https://doi.org/10.1038/s41586-024-08328-6",
+    },
+    {
+      title: "TabICL",
+      citation: "ICML · 2025",
+      href: "https://proceedings.mlr.press/v267/qu25d.html",
+    },
+  ],
+  relationalReferences: [
     {
       title: "Relational Transformer",
       citation: "ICLR 2026",
@@ -78,12 +91,7 @@ export const researchPositioning: ResearchPositioning = {
       href: "https://arxiv.org/abs/2604.12596",
     },
   ],
-  methodReferences: [
-    {
-      title: "RT-J",
-      citation: "Preprint · 2026",
-      href: "https://openreview.net/forum?id=oQINTd9din",
-    },
+  integrationReferences: [
     {
       title: "OpenRFM",
       citation: "Preprint · 2026",

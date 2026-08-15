@@ -6,6 +6,16 @@ const pageDescription =
 
 const externalReferences = [
   {
+    title: "TabPFN v2",
+    citation: "Nature · 2025",
+    href: "https://doi.org/10.1038/s41586-024-08328-6",
+  },
+  {
+    title: "TabICL",
+    citation: "ICML · 2025",
+    href: "https://proceedings.mlr.press/v267/qu25d.html",
+  },
+  {
     title: "Relational Transformer",
     citation: "ICLR 2026",
     href: "https://openreview.net/forum?id=rpPtgMC5s9",
@@ -14,11 +24,6 @@ const externalReferences = [
     title: "KumoRFM-2",
     citation: "Preprint · 2026",
     href: "https://arxiv.org/abs/2604.12596",
-  },
-  {
-    title: "RT-J",
-    citation: "Preprint · 2026",
-    href: "https://openreview.net/forum?id=oQINTd9din",
   },
   {
     title: "OpenRFM",
@@ -101,10 +106,14 @@ test("attributes external research and keeps StructureML writing unpublished", a
     "We believe structured-data foundation models are at a GPT-2 moment",
   );
 
-  const evidence = page.locator(".field-evidence-intro");
-  await expect(evidence).toContainText("Recent external work—including");
-  await expect(evidence).toContainText(
-    "Together, this body of work makes the direction credible without closing the gaps",
+  const evidence = page.locator(".field-evidence");
+  const evidenceParagraphs = evidence.locator(".field-evidence-intro");
+  await expect(evidenceParagraphs).toHaveCount(2);
+  await expect(evidenceParagraphs.nth(0)).toContainText(
+    "At the single-table level, external work including",
+  );
+  await expect(evidenceParagraphs.nth(1)).toContainText(
+    "Across these lines of work, the direction is credible without closing the gaps",
   );
   await expect(evidence.getByRole("link")).toHaveCount(externalReferences.length);
   for (const reference of externalReferences) {
