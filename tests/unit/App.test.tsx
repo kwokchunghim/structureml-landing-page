@@ -28,7 +28,7 @@ describe("StructureML landing page", () => {
   });
 
   it("attributes the research thesis and cites selected external work", () => {
-    render(<App />);
+    const { container } = render(<App />);
 
     expect(
       screen.getByText(
@@ -41,50 +41,56 @@ describe("StructureML landing page", () => {
       ),
     ).toBeInTheDocument();
 
-    const referenceList = screen.getByRole("list", { name: "Selected external research" });
+    const evidence = container.querySelector(".field-evidence-intro");
+    expect(evidence).not.toBeNull();
+    expect(evidence).toHaveTextContent("Recent external work—including");
+    expect(evidence).toHaveTextContent(
+      "—shows that pretrained models can transfer across relational databases and prediction tasks.",
+    );
+    expect(evidence).toHaveTextContent(
+      "further explore context-efficient relational inference and the combination of relational and tabular in-context learning.",
+    );
+    expect(evidence).toHaveTextContent(
+      "Together, this body of work makes the direction credible without closing the gaps in context efficiency, relational–tabular integration or learning to make decisions.",
+    );
+
     const references = [
       {
         title: "Relational Transformer",
         citation: "ICLR 2026",
-        relevance:
-          "Cross-database and cross-task relational prediction without downstream weight updates.",
         href: "https://openreview.net/forum?id=rpPtgMC5s9",
       },
       {
         title: "KumoRFM-2",
         citation: "Preprint · 2026",
-        relevance:
-          "Few-shot prediction across connected tables with task conditioning and scalable relational retrieval.",
         href: "https://arxiv.org/abs/2604.12596",
       },
       {
         title: "RT-J",
         citation: "Preprint · 2026",
-        relevance:
-          "Context-efficient relational prediction using task-relevant evidence retrieved from the database.",
         href: "https://openreview.net/forum?id=oQINTd9din",
       },
       {
         title: "OpenRFM",
         citation: "Preprint · 2026",
-        relevance: "A dual-stage design combining relational and tabular in-context learning.",
         href: "https://arxiv.org/abs/2606.04320",
       },
     ] as const;
 
-    expect(within(referenceList).getAllByRole("listitem")).toHaveLength(references.length);
+    expect(within(evidence as HTMLElement).getAllByRole("link")).toHaveLength(references.length);
+    expect(screen.queryByText("Selected external research")).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("list", { name: "Selected external research" }),
+    ).not.toBeInTheDocument();
 
     references.forEach((reference) => {
-      const link = within(referenceList).getByRole("link", {
+      const link = within(evidence as HTMLElement).getByRole("link", {
         name: new RegExp(reference.title, "u"),
       });
-      const row = link.closest("li");
-      expect(row).not.toBeNull();
       expect(link).toHaveAttribute("href", reference.href);
       expect(link).toHaveAttribute("target", "_blank");
       expect(link).toHaveAttribute("rel", "noopener noreferrer");
-      expect(within(row as HTMLElement).getByText(reference.citation)).toBeInTheDocument();
-      expect(within(row as HTMLElement).getByText(reference.relevance)).toBeInTheDocument();
+      expect(link).toHaveTextContent(reference.citation);
     });
   });
 

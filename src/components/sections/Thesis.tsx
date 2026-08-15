@@ -1,3 +1,4 @@
+import type { ResearchReference } from "../../content/site";
 import { researchPositioning } from "../../content/site";
 
 const conventionalPipeline = [
@@ -28,6 +29,24 @@ function Pipeline({ label, steps }: { label: string; steps: readonly string[] })
       </ol>
     </article>
   );
+}
+
+function InlineReferences({ references }: { references: readonly ResearchReference[] }) {
+  return references.map((reference, index) => (
+    <span key={reference.title}>
+      {index > 0 ? " and " : null}
+      <a
+        className="inline-citation"
+        href={reference.href}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {reference.title} <span className="inline-citation-detail">({reference.citation})</span>
+        <span aria-hidden="true"> ↗</span>
+        <span className="sr-only"> (opens in a new tab)</span>
+      </a>
+    </span>
+  ));
 }
 
 export function Thesis() {
@@ -64,34 +83,20 @@ export function Thesis() {
             <h3 id="field-evidence-heading">
               The capability is visible. The frontier is still open.
             </h3>
-            <p className="field-evidence-intro">{researchPositioning.introduction}</p>
+            <p className="field-evidence-intro">
+              Recent external work—including{" "}
+              <InlineReferences references={researchPositioning.transferReferences} />
+              —shows that pretrained models can transfer across relational databases and prediction
+              tasks. <InlineReferences references={researchPositioning.methodReferences} /> further
+              explore context-efficient relational inference and the combination of relational and
+              tabular in-context learning. Together, this body of work makes the direction credible
+              without closing the gaps in context efficiency, relational–tabular integration or
+              learning to make decisions.
+            </p>
             <blockquote className="research-thesis">
               <p className="research-thesis-label">StructureML thesis</p>
               <p>{researchPositioning.thesis}</p>
             </blockquote>
-          </div>
-
-          <div className="evidence-references">
-            <h4 id="evidence-list-heading">Selected external research</h4>
-            <ol aria-labelledby="evidence-list-heading" className="evidence-list">
-              {researchPositioning.references.map((reference) => (
-                <li key={reference.title}>
-                  <a
-                    className="evidence-link"
-                    href={reference.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span className="evidence-title">{reference.title}</span>
-                    <span className="evidence-citation">
-                      {reference.citation} <span aria-hidden="true">↗</span>
-                      <span className="sr-only"> (opens in a new tab)</span>
-                    </span>
-                  </a>
-                  <p>{reference.relevance}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
       </div>

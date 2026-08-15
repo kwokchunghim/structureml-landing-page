@@ -20,14 +20,13 @@ export interface ResearchArea {
 export interface ResearchReference {
   title: string;
   citation: string;
-  relevance: string;
   href: string;
 }
 
 export interface ResearchPositioning {
-  introduction: string;
   thesis: string;
-  references: readonly ResearchReference[];
+  transferReferences: readonly ResearchReference[];
+  methodReferences: readonly ResearchReference[];
 }
 
 export type WritingKind = "Research Note" | "Experiment" | "Paper" | "Code";
@@ -72,36 +71,29 @@ export const navigationItems: readonly NavigationItem[] = [
 ];
 
 export const researchPositioning: ResearchPositioning = {
-  introduction:
-    "Recent work shows that pretrained models can transfer across relational databases and prediction tasks. These systems make the direction credible; they do not close the gaps in context efficiency, relational–tabular integration or learning to make decisions.",
   thesis:
     "We believe structured-data foundation models are at a GPT-2 moment: the core capability is visible, but the field has not yet reached its GPT-3 breakthrough. Getting there will require advances in data, context efficiency, adaptation and decision learning—not scale alone.",
-  references: [
+  transferReferences: [
     {
       title: "Relational Transformer",
       citation: "ICLR 2026",
-      relevance:
-        "Cross-database and cross-task relational prediction without downstream weight updates.",
       href: "https://openreview.net/forum?id=rpPtgMC5s9",
     },
     {
       title: "KumoRFM-2",
       citation: "Preprint · 2026",
-      relevance:
-        "Few-shot prediction across connected tables with task conditioning and scalable relational retrieval.",
       href: "https://arxiv.org/abs/2604.12596",
     },
+  ],
+  methodReferences: [
     {
       title: "RT-J",
       citation: "Preprint · 2026",
-      relevance:
-        "Context-efficient relational prediction using task-relevant evidence retrieved from the database.",
       href: "https://openreview.net/forum?id=oQINTd9din",
     },
     {
       title: "OpenRFM",
       citation: "Preprint · 2026",
-      relevance: "A dual-stage design combining relational and tabular in-context learning.",
       href: "https://arxiv.org/abs/2606.04320",
     },
   ],

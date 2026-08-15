@@ -212,12 +212,13 @@
 }
 
 .field-evidence {
-  display: grid;
-  grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
-  gap: clamp(3rem, 8vw, 8rem);
   margin-top: clamp(4rem, 8vw, 7rem);
   padding-top: clamp(2.5rem, 5vw, 4.5rem);
   border-top: 1px solid var(--border-strong);
+}
+
+.field-evidence-copy {
+  max-width: 58rem;
 }
 
 .field-evidence-copy h3 {
@@ -230,13 +231,44 @@
 }
 
 .field-evidence-intro {
-  max-width: 39rem;
+  max-width: 56rem;
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
 }
 
+.inline-citation {
+  color: var(--foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklch, var(--accent) 45%, var(--border));
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  white-space: nowrap;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.inline-citation-detail {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.78em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.inline-citation:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.inline-citation:hover .inline-citation-detail {
+  color: currentColor;
+}
+
 .research-thesis {
+  max-width: 52rem;
   margin: clamp(2.2rem, 4vw, 3.5rem) 0 0;
   padding-left: 1.25rem;
   border-left: 2px solid var(--accent);
@@ -246,8 +278,7 @@
   margin: 0;
 }
 
-.research-thesis-label,
-.evidence-references h4 {
+.research-thesis-label {
   color: var(--accent);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 0.66rem;
@@ -266,58 +297,6 @@
   line-height: 1.7;
 }
 
-.evidence-references h4 {
-  margin: 0 0 1rem;
-}
-
-.evidence-list {
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--border-strong);
-  list-style: none;
-}
-
-.evidence-list li {
-  padding-block: 1.2rem;
-  border-bottom: 1px solid var(--border-strong);
-}
-
-.evidence-link {
-  display: flex;
-  min-height: 2.75rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  color: var(--foreground);
-}
-
-.evidence-title {
-  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  transition: color 160ms ease;
-}
-
-.evidence-citation {
-  flex: 0 0 auto;
-  color: var(--muted);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.64rem;
-  letter-spacing: 0.035em;
-}
-
-.evidence-link:hover .evidence-title {
-  color: var(--accent);
-}
-
-.evidence-list li > p {
-  max-width: 42rem;
-  margin: 0.35rem 0 0;
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
 @media (max-width: 68rem) {
   .hero-layout {
     grid-template-columns: 1fr;
@@ -325,10 +304,6 @@
 
   .hero-copy {
     max-width: 48rem;
-  }
-
-  .field-evidence {
-    grid-template-columns: 1fr;
   }
 
   .field-evidence-copy {
@@ -353,14 +328,6 @@
   .pipeline + .pipeline {
     border-top: 1px solid var(--border-strong);
     border-left: 0;
-  }
-
-  .evidence-link {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0.3rem;
-    padding-block: 0.55rem;
   }
 
   .thesis-copy {

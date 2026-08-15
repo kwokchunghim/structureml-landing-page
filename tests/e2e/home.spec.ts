@@ -8,28 +8,21 @@ const externalReferences = [
   {
     title: "Relational Transformer",
     citation: "ICLR 2026",
-    relevance:
-      "Cross-database and cross-task relational prediction without downstream weight updates.",
     href: "https://openreview.net/forum?id=rpPtgMC5s9",
   },
   {
     title: "KumoRFM-2",
     citation: "Preprint · 2026",
-    relevance:
-      "Few-shot prediction across connected tables with task conditioning and scalable relational retrieval.",
     href: "https://arxiv.org/abs/2604.12596",
   },
   {
     title: "RT-J",
     citation: "Preprint · 2026",
-    relevance:
-      "Context-efficient relational prediction using task-relevant evidence retrieved from the database.",
     href: "https://openreview.net/forum?id=oQINTd9din",
   },
   {
     title: "OpenRFM",
     citation: "Preprint · 2026",
-    relevance: "A dual-stage design combining relational and tabular in-context learning.",
     href: "https://arxiv.org/abs/2606.04320",
   },
 ] as const;
@@ -108,16 +101,20 @@ test("attributes external research and keeps StructureML writing unpublished", a
     "We believe structured-data foundation models are at a GPT-2 moment",
   );
 
-  const referenceList = page.getByRole("list", { name: "Selected external research" });
-  await expect(referenceList.getByRole("listitem")).toHaveCount(externalReferences.length);
+  const evidence = page.locator(".field-evidence-intro");
+  await expect(evidence).toContainText("Recent external work—including");
+  await expect(evidence).toContainText(
+    "Together, this body of work makes the direction credible without closing the gaps",
+  );
+  await expect(evidence.getByRole("link")).toHaveCount(externalReferences.length);
+  await expect(page.getByText("Selected external research", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("list", { name: "Selected external research" })).toHaveCount(0);
   for (const reference of externalReferences) {
-    const link = referenceList.getByRole("link", { name: new RegExp(reference.title, "u") });
-    const row = link.locator("..");
+    const link = evidence.getByRole("link", { name: new RegExp(reference.title, "u") });
     await expect(link).toHaveAttribute("href", reference.href);
     await expect(link).toHaveAttribute("target", "_blank");
     await expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    await expect(row).toContainText(reference.citation);
-    await expect(row).toContainText(reference.relevance);
+    await expect(link).toContainText(reference.citation);
   }
 
   const writing = page.locator("#writing");
