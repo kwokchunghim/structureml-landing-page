@@ -71,7 +71,7 @@ export function RelationalDiagram() {
     <figure
       aria-labelledby="relational-diagram-title"
       className="relational-diagram"
-      data-animation-state="static"
+      data-animation-state="sequenced"
     >
       <div className="diagram-toolbar">
         <div>
@@ -95,17 +95,29 @@ export function RelationalDiagram() {
         >
           <path
             className="relationship-path path-customer-orders"
-            d="M 300 136 C 360 136, 365 160, 430 160"
+            d="M 326.8 127.1 C 337 127.1, 342 140.6, 353 140.6"
+            pathLength="1"
           />
           <path
             className="relationship-path path-product-orders"
-            d="M 625 390 C 625 330, 625 255, 625 205"
+            d="M 647 167.7 H 675 V 375.3 H 647"
+            pathLength="1"
           />
           <path
             className="relationship-path path-customer-sessions"
-            d="M 185 218 C 185 270, 185 316, 185 355"
+            d="M 32.8 402.4 H 14 V 127.1 H 32.8"
+            pathLength="1"
           />
-          <path className="representation-path" d="M 730 250 C 775 250, 780 250, 820 250" />
+          <path
+            className="representation-path"
+            d="M 675 260 C 710 260, 720 260, 753.3 260"
+            pathLength="1"
+          />
+
+          <circle className="diagram-signal signal-customer-orders" cx="353" cy="140.6" r="4" />
+          <circle className="diagram-signal signal-product-orders" cx="647" cy="167.7" r="4" />
+          <circle className="diagram-signal signal-customer-sessions" cx="32.8" cy="402.4" r="4" />
+          <circle className="diagram-signal signal-representation" cx="675" cy="260" r="4" />
         </svg>
 
         {schemaTables.map((table) => (
