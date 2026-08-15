@@ -12,7 +12,7 @@ The complete content, legal, visual, engineering, and release contract lives in 
 - No backend, API routes, database, authentication, analytics, secrets, or environment variables.
 - No functioning product prototype, StructureML publications, or unreported StructureML results.
 - GitHub destinations remain visibly disabled until a real repository URL is approved.
-- Research & Writing displays only `COMING SOON` and contains no promised titles, dates, or links.
+- Writing displays only `COMING SOON` and contains no promised titles, dates, or links.
 - Tony Kwok and Billy Zhao are shown with equal weight as co-founders, using only their approved LinkedIn destinations and no founder biographies or employer references.
 
 StructureML is currently described only as an unincorporated independent research initiative. Do not add trademark symbols, a company suffix, incorporation language, employer references, affiliations, or endorsements. GPT-2 and GPT-3 appear only in an attributed historical analogy; they are not StructureML branding and do not imply OpenAI affiliation. The MIT license covers the repository source; it does not make a trademark or incorporation claim.

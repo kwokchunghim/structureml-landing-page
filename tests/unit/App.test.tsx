@@ -180,7 +180,7 @@ describe("StructureML landing page", () => {
   it("keeps writing in an honest empty state", () => {
     render(<App />);
 
-    const heading = screen.getByRole("heading", { name: "Research & Writing" });
+    const heading = screen.getByRole("heading", { name: "Writing" });
     const section = heading.closest("section");
     expect(section).not.toBeNull();
     expect(within(section as HTMLElement).getByText("COMING SOON")).toBeInTheDocument();

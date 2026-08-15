@@ -196,13 +196,13 @@ Do not claim that all tabular in-context inference has a universal O(N) complexi
 
 Prediction-to-decisioning is broader than preference learning. It may involve causal or counterfactual estimation, constrained optimization, contextual bandits, offline policy learning, or sequential reinforcement learning. DPO is an analogy for preference post-training; it does not itself perform online exploration and exploitation.
 
-### Research & Writing
+### Writing
 
 Anchor: #writing
 
 Heading:
 
-Research & Writing
+Writing
 
 Supporting copy:
 

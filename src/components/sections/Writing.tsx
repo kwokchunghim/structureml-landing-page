@@ -41,8 +41,7 @@ export function Writing({ entries = writingEntries }: { entries?: readonly Writi
       <div className="site-container">
         <div className="editorial-heading">
           <div>
-            <p className="eyebrow">Writing</p>
-            <h2>Research &amp; Writing</h2>
+            <h2>Writing</h2>
           </div>
           <p>Notes, experiments and technical investigations as we learn in public.</p>
         </div>
