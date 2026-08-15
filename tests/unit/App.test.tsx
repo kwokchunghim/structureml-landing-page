@@ -41,20 +41,32 @@ describe("StructureML landing page", () => {
       ),
     ).toBeInTheDocument();
 
-    const evidence = container.querySelector(".field-evidence-intro");
+    const evidence = container.querySelector(".field-evidence");
     expect(evidence).not.toBeNull();
-    expect(evidence).toHaveTextContent("Recent external work—including");
-    expect(evidence).toHaveTextContent(
-      "—shows that pretrained models can transfer across relational databases and prediction tasks.",
+    const evidenceParagraphs = evidence?.querySelectorAll(".field-evidence-intro") ?? [];
+    expect(evidenceParagraphs).toHaveLength(2);
+    expect(evidenceParagraphs[0]).toHaveTextContent(
+      "At the single-table level, external work including",
     );
-    expect(evidence).toHaveTextContent(
-      "further explore context-efficient relational inference and the combination of relational and tabular in-context learning.",
+    expect(evidenceParagraphs[0]).toHaveTextContent(
+      "These results make tabular foundation models credible while leaving context efficiency and support selection open.",
     );
-    expect(evidence).toHaveTextContent(
-      "Together, this body of work makes the direction credible without closing the gaps in context efficiency, relational–tabular integration or learning to make decisions.",
+    expect(evidenceParagraphs[1]).toHaveTextContent("At the relational level,");
+    expect(evidenceParagraphs[1]).toHaveTextContent(
+      "Across these lines of work, the direction is credible without closing the gaps in context efficiency, relational–tabular integration or learning to make decisions.",
     );
 
     const references = [
+      {
+        title: "TabPFN v2",
+        citation: "Nature · 2025",
+        href: "https://doi.org/10.1038/s41586-024-08328-6",
+      },
+      {
+        title: "TabICL",
+        citation: "ICML · 2025",
+        href: "https://proceedings.mlr.press/v267/qu25d.html",
+      },
       {
         title: "Relational Transformer",
         citation: "ICLR 2026",
@@ -64,11 +76,6 @@ describe("StructureML landing page", () => {
         title: "KumoRFM-2",
         citation: "Preprint · 2026",
         href: "https://arxiv.org/abs/2604.12596",
-      },
-      {
-        title: "RT-J",
-        citation: "Preprint · 2026",
-        href: "https://openreview.net/forum?id=oQINTd9din",
       },
       {
         title: "OpenRFM",

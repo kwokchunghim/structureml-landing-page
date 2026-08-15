@@ -10,7 +10,7 @@ The production domain is structureml.com. Domain ownership must never be present
 
 The site should feel approximately 80% serious ML research lab and 20% ambitious infrastructure startup. It must establish technical seriousness, explain the structured-data thesis, provide a future home for research, writing, experiments and open-source work, show current research interests, and include only a restrained placeholder for a future product.
 
-Recent work on the Relational Transformer, KumoRFM-2, RT-J, and OpenRFM provides evidence that pretrained models can transfer across relational databases and prediction tasks. These results make the technical direction credible while leaving major gaps in context efficiency, relational-tabular integration, and decision learning.
+Recent work on TabPFN v2, TabICL, the Relational Transformer, KumoRFM-2, and OpenRFM provides evidence that pretrained models can adapt across tabular and relational prediction tasks. These results make the technical direction credible while leaving major gaps in context efficiency, relational-tabular integration, and decision learning.
 
 StructureML believes this is a GPT-2 moment for structured data: the core capability is visible, but the field has not yet reached its GPT-3 breakthrough. This is an authored research thesis, not a benchmark conclusion or a claim that scale alone will produce the breakthrough.
 
@@ -139,7 +139,11 @@ Heading:
 
 Copy, with each named work linked inline:
 
-> Recent external work—including Relational Transformer (ICLR 2026) and KumoRFM-2 (Preprint · 2026)—shows that pretrained models can transfer across relational databases and prediction tasks. RT-J (Preprint · 2026) and OpenRFM (Preprint · 2026) further explore context-efficient relational inference and the combination of relational and tabular in-context learning. Together, this body of work makes the direction credible without closing the gaps in context efficiency, relational–tabular integration or learning to make decisions.
+> At the single-table level, external work including TabPFN v2 (Nature · 2025) and TabICL (ICML · 2025) shows that pretrained models can adapt to unseen tabular prediction tasks through labelled context rather than per-dataset parameter updates, with newer architectures extending the approach to larger classification datasets. These results make tabular foundation models credible while leaving context efficiency and support selection open.
+
+Then:
+
+> At the relational level, Relational Transformer (ICLR 2026) and KumoRFM-2 (Preprint · 2026) show that pretrained models can transfer across relational databases and prediction tasks. OpenRFM (Preprint · 2026) further explores the combination of a relational backbone with tabular in-context learning. Across these lines of work, the direction is credible without closing the gaps in context efficiency, relational–tabular integration or learning to make decisions.
 
 Attributed callout label:
 
@@ -151,9 +155,10 @@ Callout:
 
 Citation destinations:
 
+- TabPFN v2 — Nature · 2025 — https://doi.org/10.1038/s41586-024-08328-6
+- TabICL — ICML · 2025 — https://proceedings.mlr.press/v267/qu25d.html
 - Relational Transformer — ICLR 2026 — https://openreview.net/forum?id=rpPtgMC5s9
 - KumoRFM-2 — Preprint · 2026 — https://arxiv.org/abs/2604.12596
-- RT-J — Preprint · 2026 — https://openreview.net/forum?id=oQINTd9din
 - OpenRFM — Preprint · 2026 — https://arxiv.org/abs/2606.04320
 
 These citations are external research, not StructureML publications. Render them only as inline links inside the state-of-the-field prose; do not display them as a standalone publication list, card group, or other treatment that could imply authorship. Open each in a new tab with safe external-link attributes and accessible new-tab text.
@@ -379,7 +384,7 @@ Writing statuses: upcoming, published.
 
 Link destinations: internal, github, arxiv, external.
 
-Research references contain title, citation/status detail, and an HTTPS URL. Current references are the four external works cited inline in the Thesis section.
+Research references contain title, citation/status detail, and an HTTPS URL. Current references are the five external works cited inline in the Thesis section.
 
 Founder entries contain name, role, and a configured LinkedIn URL.
 

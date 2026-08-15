@@ -237,6 +237,10 @@
   line-height: 1.7;
 }
 
+.field-evidence-intro + .field-evidence-intro {
+  margin-top: 1rem;
+}
+
 .inline-citation {
   color: var(--foreground);
   font-weight: 500;

@@ -84,14 +84,21 @@ export function Thesis() {
               The capability is visible. The frontier is still open.
             </h3>
             <p className="field-evidence-intro">
-              Recent external work—including{" "}
-              <InlineReferences references={researchPositioning.transferReferences} />
-              —shows that pretrained models can transfer across relational databases and prediction
-              tasks. <InlineReferences references={researchPositioning.methodReferences} /> further
-              explore context-efficient relational inference and the combination of relational and
-              tabular in-context learning. Together, this body of work makes the direction credible
-              without closing the gaps in context efficiency, relational–tabular integration or
-              learning to make decisions.
+              At the single-table level, external work including{" "}
+              <InlineReferences references={researchPositioning.tabularReferences} /> shows that
+              pretrained models can adapt to unseen tabular prediction tasks through labelled
+              context rather than per-dataset parameter updates, with newer architectures extending
+              the approach to larger classification datasets. These results make tabular foundation
+              models credible while leaving context efficiency and support selection open.
+            </p>
+            <p className="field-evidence-intro">
+              At the relational level,{" "}
+              <InlineReferences references={researchPositioning.relationalReferences} /> show that
+              pretrained models can transfer across relational databases and prediction tasks.{" "}
+              <InlineReferences references={researchPositioning.integrationReferences} /> further
+              explores the combination of a relational backbone with tabular in-context learning.
+              Across these lines of work, the direction is credible without closing the gaps in
+              context efficiency, relational–tabular integration or learning to make decisions.
             </p>
             <blockquote className="research-thesis">
               <p className="research-thesis-label">StructureML thesis</p>

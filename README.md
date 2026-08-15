@@ -19,7 +19,7 @@ StructureML is currently described only as an unincorporated independent researc
 
 ## Research positioning
 
-The homepage cites four external primary sources—Relational Transformer, KumoRFM-2, RT-J, and OpenRFM—as evidence that the technical direction is credible. The sources appear only as inline links within prose explicitly introduced as external work, use qualitative rather than numeric claims, and retain their conference/preprint status labels. They are not presented as a publication list and remain distinct from StructureML's empty writing section.
+The homepage cites five external primary sources—TabPFN v2, TabICL, Relational Transformer, KumoRFM-2, and OpenRFM—as evidence that the technical direction is credible. The sources appear only as inline links within prose explicitly introduced as external work, use qualitative rather than numeric claims, and retain their publication status labels. They are not presented as a publication list and remain distinct from StructureML's empty writing section.
 
 The public thesis remains exploratory. It does not claim that StructureML built the cited models, that structured-data foundation models are solved, or that predictive benchmarks establish decision quality. Prediction-to-decisioning is presented as an open research problem spanning context, objectives, constraints, feedback, optimization, contextual bandits, and reinforcement learning—not as prototype functionality.
 
