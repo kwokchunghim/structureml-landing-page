@@ -30,4 +30,12 @@ describe("production configuration", () => {
     expect(workflow).not.toMatch(/secrets\./u);
     expect(workflow).not.toMatch(/vercel deploy/iu);
   });
+
+  it("does not introduce legal-entity or trademark metadata", () => {
+    const html = readFileSync("index.html", "utf8");
+
+    expect(html).not.toMatch(/"@type"\s*:\s*"Organization"/iu);
+    expect(html).not.toMatch(/\b(?:company number|registered office|registered company)\b/iu);
+    expect(html).not.toMatch(/[™®]/u);
+  });
 });

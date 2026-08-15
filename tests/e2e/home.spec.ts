@@ -4,6 +4,36 @@ import { expect, test } from "@playwright/test";
 const pageDescription =
   "StructureML researches models that learn directly from tables, entities and relationships — and the systems needed to make them useful at scale.";
 
+const externalReferences = [
+  {
+    title: "Relational Transformer",
+    citation: "ICLR 2026",
+    relevance:
+      "Cross-database and cross-task relational prediction without downstream weight updates.",
+    href: "https://openreview.net/forum?id=rpPtgMC5s9",
+  },
+  {
+    title: "KumoRFM-2",
+    citation: "Preprint · 2026",
+    relevance:
+      "Few-shot prediction across connected tables with task conditioning and scalable relational retrieval.",
+    href: "https://arxiv.org/abs/2604.12596",
+  },
+  {
+    title: "RT-J",
+    citation: "Preprint · 2026",
+    relevance:
+      "Context-efficient relational prediction using task-relevant evidence retrieved from the database.",
+    href: "https://openreview.net/forum?id=oQINTd9din",
+  },
+  {
+    title: "OpenRFM",
+    citation: "Preprint · 2026",
+    relevance: "A dual-stage design combining relational and tabular in-context learning.",
+    href: "https://arxiv.org/abs/2606.04320",
+  },
+] as const;
+
 test("serves production metadata and indexable static assets", async ({ page, request }) => {
   const response = await page.goto("/");
   expect(response?.status()).toBe(200);
@@ -67,6 +97,40 @@ test("serves the complete landing page with working anchors and disabled placeho
     "href",
     "mailto:info@structureml.com",
   );
+});
+
+test("attributes external research and keeps StructureML writing unpublished", async ({ page }) => {
+  await page.goto("/");
+
+  const thesis = page.locator("blockquote.research-thesis");
+  await expect(thesis).toContainText("StructureML thesis");
+  await expect(thesis).toContainText(
+    "We believe structured-data foundation models are at a GPT-2 moment",
+  );
+
+  const referenceList = page.getByRole("list", { name: "Selected external research" });
+  for (const reference of externalReferences) {
+    const link = referenceList.getByRole("link", { name: new RegExp(reference.title, "u") });
+    const row = link.locator("..");
+    await expect(link).toHaveAttribute("href", reference.href);
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    await expect(row).toContainText(reference.citation);
+    await expect(row).toContainText(reference.relevance);
+  }
+
+  const writing = page.locator("#writing");
+  await expect(writing.getByText("COMING SOON", { exact: true })).toBeVisible();
+  await expect(writing.getByText("Nothing published yet.", { exact: true })).toBeVisible();
+  await expect(writing.locator("article")).toHaveCount(0);
+  await expect(writing.getByRole("link")).toHaveCount(0);
+  for (const removedTitle of [
+    "Does Tabular ICL Need the Entire Training Set?",
+    "Dissecting Relational In-Context Learning",
+    "From Feature Engineering to Relational Foundation Models",
+  ]) {
+    await expect(page.getByText(removedTitle, { exact: true })).toHaveCount(0);
+  }
 });
 
 test("supports the mobile menu keyboard journey", async ({ page }) => {
@@ -263,7 +327,11 @@ test("keeps public legal language restrained", async ({ page }) => {
   const bodyText = await page.locator("body").innerText();
 
   expect(bodyText).not.toMatch(/[™®]/u);
-  expect(bodyText).not.toMatch(/\b(?:Ltd|Limited|Inc\.?|LLC|corporation|employer)\b/iu);
+  expect(bodyText).not.toMatch(
+    /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
+  );
+  expect(bodyText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
+  expect(bodyText).not.toContain("O(N)");
   expect(bodyText).toContain("Independent research initiative.");
   expect(bodyText).toContain("© 2026 Tony Kwok and Billy Zhao");
 });

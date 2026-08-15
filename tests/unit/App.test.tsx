@@ -293,7 +293,12 @@ describe("StructureML landing page", () => {
     const publicText = container.textContent ?? "";
 
     expect(publicText).not.toMatch(/[™®]/u);
-    expect(publicText).not.toMatch(/\b(?:Ltd|Limited|Inc\.?|LLC|corporation|employer)\b/iu);
+    expect(publicText).not.toMatch(
+      /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
+    );
+    expect(publicText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
+    expect(publicText).not.toContain("O(N)");
+    expect(publicText).toContain("independent research initiative");
     expect(publicText).toContain("© 2026 Tony Kwok and Billy Zhao");
   });
 });
