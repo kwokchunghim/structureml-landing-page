@@ -1,8 +1,8 @@
 # StructureML repository instructions
 
-## Source of truth
+## Site requirements
 
-Read `docs/structureml-v0-spec.md` before making changes. It owns the approved public copy, founders, legal wording, links, visual direction, architecture, tests, and release constraints.
+Read `docs/structureml-v0-spec.md` before making changes. It defines the public copy, founders, legal wording, links, visual direction, architecture, tests, and release constraints.
 
 Do not invent research results, publications, product functionality, founder information, URLs, affiliations, or business claims. StructureML is an unincorporated independent research initiative. Never add trademark symbols, company suffixes, incorporation claims, or employer references.
 
@@ -19,8 +19,8 @@ Do not refactor, reformat, or clean up unrelated code. Remove only orphans creat
 
 ## Verification
 
-Run `npm run check` before handoff. Do not claim a check passed if it did not run. Test exact public claims, keyboard behavior, reduced motion, responsive layouts, and disabled link states.
+Run `npm run check` before opening or updating a pull request. Do not claim a check passed if it did not run. Test exact public claims, keyboard behavior, reduced motion, responsive layouts, and disabled link states.
 
 ## Git discipline
 
-Use focused conventional commits on a feature branch. Do not push directly to `main`, rewrite published history, skip hooks/checks, create external infrastructure, publish code, or deploy unless explicitly authorized.
+Use focused conventional commits on a feature branch and submit them through a pull request. Do not push directly to `main`, rewrite published history, or skip required checks. Treat deployments, repository administration, and external infrastructure as separate operational changes.

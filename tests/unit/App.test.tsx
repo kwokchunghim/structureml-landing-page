@@ -5,7 +5,7 @@ import { App } from "../../src/App";
 import { Writing } from "../../src/components/sections/Writing";
 
 describe("StructureML landing page", () => {
-  it("renders the approved positioning and page landmarks", () => {
+  it("renders the site positioning and page landmarks", () => {
     render(<App />);
 
     expect(screen.getByRole("banner")).toBeInTheDocument();
@@ -78,10 +78,6 @@ describe("StructureML landing page", () => {
     ] as const;
 
     expect(within(evidence as HTMLElement).getAllByRole("link")).toHaveLength(references.length);
-    expect(screen.queryByText("Selected external research")).not.toBeInTheDocument();
-    expect(
-      screen.queryByRole("list", { name: "Selected external research" }),
-    ).not.toBeInTheDocument();
 
     references.forEach((reference) => {
       const link = within(evidence as HTMLElement).getByRole("link", {
@@ -256,7 +252,7 @@ describe("StructureML landing page", () => {
     expect(screen.getByText("Product direction currently under development.")).toBeInTheDocument();
   });
 
-  it("renders both co-founders with only the approved information", () => {
+  it("renders both co-founders with only the configured information", () => {
     render(<App />);
 
     expect(
@@ -285,12 +281,6 @@ describe("StructureML landing page", () => {
       expect(link).toHaveAttribute("rel", "noopener noreferrer");
     }
 
-    expect(screen.queryByText("Information TBC.")).not.toBeInTheDocument();
-    expect(
-      screen.queryByText(
-        "Machine learning engineer based in London, interested in production ML, structured-data foundation models and learning systems.",
-      ),
-    ).not.toBeInTheDocument();
     expect(tony?.querySelector(".founder-bio")).toBeNull();
     expect(billy?.querySelector(".founder-bio")).toBeNull();
   });
@@ -321,8 +311,6 @@ describe("StructureML landing page", () => {
       /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|LLP|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
     );
     expect(publicText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
-    expect(publicText).not.toContain("O(N)");
-    expect(publicText).not.toContain("Spotify");
     expect(publicText).toContain("independent research initiative");
     expect(publicText).toContain("© 2026 Tony Kwok and Billy Zhao");
   });

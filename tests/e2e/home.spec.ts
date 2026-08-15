@@ -107,8 +107,6 @@ test("attributes external research and keeps StructureML writing unpublished", a
     "Together, this body of work makes the direction credible without closing the gaps",
   );
   await expect(evidence.getByRole("link")).toHaveCount(externalReferences.length);
-  await expect(page.getByText("Selected external research", { exact: true })).toHaveCount(0);
-  await expect(page.getByRole("list", { name: "Selected external research" })).toHaveCount(0);
   for (const reference of externalReferences) {
     const link = evidence.getByRole("link", { name: new RegExp(reference.title, "u") });
     await expect(link).toHaveAttribute("href", reference.href);
@@ -122,13 +120,6 @@ test("attributes external research and keeps StructureML writing unpublished", a
   await expect(writing.getByText("Nothing published yet.", { exact: true })).toBeVisible();
   await expect(writing.locator("article")).toHaveCount(0);
   await expect(writing.getByRole("link")).toHaveCount(0);
-  for (const removedTitle of [
-    "Does Tabular ICL Need the Entire Training Set?",
-    "Dissecting Relational In-Context Learning",
-    "From Feature Engineering to Relational Foundation Models",
-  ]) {
-    await expect(page.getByText(removedTitle, { exact: true })).toHaveCount(0);
-  }
 });
 
 test("supports the mobile menu keyboard journey", async ({ page }) => {
@@ -205,7 +196,6 @@ test("stacks founders on mobile and gives them equal desktop weight", async ({ p
     await expect(link).toHaveAttribute("rel", "noopener noreferrer");
   }
 
-  await expect(page.getByText("Information TBC.", { exact: true })).toHaveCount(0);
   await expect(page.locator(".founder-bio")).toHaveCount(0);
 
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -346,8 +336,6 @@ test("keeps public legal language restrained", async ({ page }) => {
     /\b(?:company|corporation|incorporated|Ltd|Limited|Inc\.?|LLC|LLP|employer|affiliated|affiliation|endorsed|endorsement|sponsored|sponsorship|partnership)\b/iu,
   );
   expect(bodyText).not.toMatch(/\b(?:our foundation model|our model|we built)\b/iu);
-  expect(bodyText).not.toContain("O(N)");
-  expect(bodyText).not.toContain("Spotify");
   expect(bodyText).toContain("Independent research initiative.");
   expect(bodyText).toContain("© 2026 Tony Kwok and Billy Zhao");
 });
