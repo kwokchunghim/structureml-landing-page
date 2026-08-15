@@ -327,6 +327,7 @@ test("terminates relationship paths on their exact PK and FK rows", async ({ pag
 });
 
 test("has no serious automated accessibility violations", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const results = await new AxeBuilder({ page }).analyze();
   const seriousViolations = results.violations.filter(
