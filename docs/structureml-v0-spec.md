@@ -296,15 +296,19 @@ Tony Kwok
 
 Co-founder
 
-> Machine learning engineer based in London, interested in production ML, structured-data foundation models and learning systems.
+LinkedIn ↗
+
+https://www.linkedin.com/in/tonykwokch/
 
 Billy Zhao
 
 Co-founder
 
-> Information TBC.
+LinkedIn ↗
 
-Render both founders with equal visual weight. Billy’s placeholder is honest ordinary copy, not a fabricated biography, skeleton, hidden profile, or implied network request. Show no founder GitHub, LinkedIn, employer branding, employer permission statement, Spotify branding, affiliation, or endorsement.
+https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/
+
+Render both founders with equal visual weight. Show only each approved name, the shared Co-founder role, and the supplied LinkedIn destination; do not display biographies, employer names, employer permission statements, Spotify branding, affiliations, endorsements, founder GitHub links, or placeholder text. LinkedIn links open in a new tab with safe external-link attributes and accessible new-tab text.
 
 ### Footer
 
@@ -342,7 +346,7 @@ Use approximately 96–128px desktop and 64–88px mobile section spacing. The h
 Page composition:
 
 - Asymmetric hero text/diagram split at desktop, stacked on mobile
-- Two editorial thesis columns followed by a compact external-evidence treatment
+- Two editorial thesis columns followed by inline external citations
 - Numbered research rows
 - Compact writing coming-soon state
 - One clearly labelled prototype frame
@@ -377,19 +381,17 @@ Link destinations: internal, github, arxiv, external.
 
 Research references contain title, citation/status detail, and an HTTPS URL. Initial references are the four external works cited inline in the Thesis section.
 
-Founder entries contain name, role, bio, and complete/tbc status.
+Founder entries contain name, role, and an approved LinkedIn URL.
 
 Initial links:
 
 - githubUrl: null
 - contactEmail: info@structureml.com
-- founderGithubUrl: null
-- founderLinkedInUrl: null
 
 Initial founders:
 
-- Tony Kwok; Co-founder; approved biography above; complete
-- Billy Zhao; Co-founder; Information TBC.; tbc
+- Tony Kwok; Co-founder; https://www.linkedin.com/in/tonykwokch/
+- Billy Zhao; Co-founder; https://www.linkedin.com/in/yanhong-billy-zhao-9913ba140/
 
 Initial writing entries: none. Render the approved coming-soon state while the collection is empty.
 
@@ -421,7 +423,7 @@ Scripts must include dev, build, preview, format, format:check, lint, typecheck,
 
 Use Prettier, type-aware ESLint, Vitest, Testing Library, user-event, Playwright Chromium, and Axe Playwright.
 
-Tests cover exact public copy, anchors, disabled GitHub states, info@structureml.com, both co-founders, Billy’s TBC status, the empty writing state, external citation URLs and link safety, the attributed GPT-2/GPT-3 thesis, disabled prototype, exact research tags, technical-direction stages, mobile menu keyboard behavior, relational diagram structure, reduced motion, responsive overflow, metadata, landmarks, accessibility, production serving, and the absence of trademark/company/employer/affiliation claims.
+Tests cover exact public copy, anchors, disabled GitHub states, info@structureml.com, both co-founders and their approved LinkedIn destinations, the absence of founder biographies and employer references, the empty writing state, external citation URLs and link safety, the attributed GPT-2/GPT-3 thesis, disabled prototype, exact research tags, technical-direction stages, mobile menu keyboard behavior, relational diagram structure, reduced motion, responsive overflow, metadata, landmarks, accessibility, production serving, and the absence of trademark/company/employer/affiliation claims.
 
 CI runs on pull requests and pushes to main with read-only contents permission, concurrency cancellation, a 20-minute timeout, SHA-pinned actions, Node 24/npm caching, npm ci, format check, lint, typecheck, component tests, Chromium installation, Playwright tests, and build.
 
